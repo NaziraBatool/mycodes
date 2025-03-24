@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpenseTracker</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<style>
+    table{
+        border-style: solid;
+    }
+
+    tr{
+        border-style: solid;
+    }
+</style>
+</head>
+<body>
+
+    <form action="" id="form">
+        <label for="">Amount</label>
+        <input type="text" id="amount">
+
+        <label for="">Description</label>
+        <input type="text" id="descrip">
+
+        <label for="">Category</label>
+        <input type="text" id="category">
+    </form>
+    <table id="table">
+        <thead>
+            <td>Amount</td>
+            <td>Description</td>
+            <td>Category</td>
+        </thead>
+       
+    
+    </table>
+    
+     <button id="add-more">Add More Expense</button>
+
+     <button id="add">Add More</button>
+    <script>
+       
+
+    
+
+    let array = [];
+
+    let table = $('#table');
+
+    renderTable();
+
+    $('#form').hide()
+
+    let form = $('#form');
+
+    $('#add-more').on('click' , function(){
+        form.show()
+
+     
+
+    })
+
+    function renderTable(){
+        
+    for (const element of array) {
+        table.append(`<tr></tr>`)
+        for (const key in element) {
+          
+
+            table.append(`<td> ${ element[key]}</td>`)
+    }
+    }
+    }
+    
+    $(document).on('click' ,'#add' , function(){
+        let amount = $('#amount').val();
+        let description = $('#descrip').val();
+        let category = $('#category').val();
+
+        array.push({amount:amount,
+                description: description,
+                category:category});
+
+                renderTable();
+
+    })
+
+    
+
+    
+    
+    </script>
+</body>
+</html>
